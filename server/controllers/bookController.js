@@ -28,10 +28,10 @@ const bookController = {
   },
   creat: async (req, res) => {
     try {
-      const { author, description } = req.body;
+      const { author, description ,name} = req.body;
       const [rows, fields] = await connection.query(
-        "INSERT INTO book (author,description) values (?,?)",
-        [author, description]
+        "INSERT INTO book (author,description,name) values (?,?,?)",
+        [author, description,name]
       );
       res.json({ data: rows });
     } catch (err) {
@@ -44,10 +44,10 @@ const bookController = {
   update: async (req, res) => {
     try {
       const { id } = req.params;
-      const { author, description } = req.body;
+      const { author, description, name } = req.body;
       const [rows, fields] = await connection.query(
-        "UPDATE book SET author=? ,description=? WHERE id = ?",
-        [author, description, id]
+        "UPDATE book SET author=? ,description=? ,name=? WHERE id = ?",
+        [author, description, name, id]
       );
       res.json({ data: rows });
     } catch (err) {
