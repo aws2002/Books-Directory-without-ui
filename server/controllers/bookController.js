@@ -28,10 +28,10 @@ const bookController = {
   },
   creat: async (req, res) => {
     try {
-      const { author, description ,name} = req.body;
+      const { author, description, name } = req.body;
       const [rows, fields] = await connection.query(
         "INSERT INTO book (author,description,name) values (?,?,?)",
-        [author, description,name]
+        [author, description, name]
       );
       res.json({ data: rows });
     } catch (err) {
